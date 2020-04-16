@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>the current time is: <span id="time"></span></p>
+
+    <script>
+
+      var update_loop = setInterval(getTime, 1000);
+
+      getTime()
+
+
+      function getTime() {
+        var d = new Date();
+        var hour, minute, seconds, time;
+
+        if (d.getHours() == 0) {
+          hour = d.getHours();
+          time = "AM"
+        } else if (d.getHours() > 0 && d.getHours() < 12) {
+          hour = d.getHours();
+          time = 'AM'
+        } else {
+          hour = d.getHours()-12;
+          time = 'PM'
+        }
+
+        if (d.getMinutes() < 10) {
+          minute = '0'+d.getMinutes();
+        } else {
+          minute = d.getMinutes();
+        }
+
+        if (d.getSeconds() < 10) {
+          seconds = '0' + d.getSeconds();
+        } else {
+          seconds = d.getSeconds();
+        };
+        document.getElementById('time').innerHTML = hour.toString() + ":" + minute.toString() + ":" + seconds.toString() + " " + time;
+      };
+
+    </script>
+  </body>
+</html>
